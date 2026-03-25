@@ -1286,6 +1286,8 @@ impl ScavengerContract {
             panic!("Only waste owner can transfer");
         }
 
+        assert!(from != to, "Cannot transfer waste to self");
+
         // Align with v2: reject transfers on deactivated waste
         if !material.is_active {
             panic!("Cannot transfer deactivated waste");
